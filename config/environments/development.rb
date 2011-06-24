@@ -9,6 +9,9 @@ Chronuscop::Application.configure do
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
 
+  # required for devise. Setting the mailer used by devise for sending account activation mails.
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
   config.action_view.debug_rjs             = true
