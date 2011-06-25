@@ -9,6 +9,14 @@ Chronuscop::Application.routes.draw do
 
   get "pages/help"
 
+  # nesting resources upto 2 levels. Not a very elegant solution.
+  # using :as => "people" to avoid conflict with devise routes.
+  resources :users, :as => "people" do
+    resources :projects do
+      resources :translations
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

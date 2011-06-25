@@ -7,7 +7,8 @@ gem 'rails', '3.0.7'
 
 gem 'sqlite3'
 
-gem 'devise'
+# check the version number.
+gem 'devise','1.3.4'
 
 # Use unicorn as the web server
 # gem 'unicorn'
