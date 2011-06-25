@@ -1,0 +1,15 @@
+<h1>Projects</h1>
+<hr>
+<%= link_to "Add project",new_project_path %><br/>
+<% if( current_user.projects.count == 0) then %>
+<%= "no user projects" %>
+<% else %>
+
+<ol>
+<% current_user.projects.each do |p| %>
+  <li><%= link_to "#{p.name}",p %></li>
+<% end %>
+</ol>
+
+<% end %>
+

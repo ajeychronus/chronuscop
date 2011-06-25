@@ -1,5 +1,5 @@
 ul.hmenu {
-    background-color: yellow;
+    background-color: green;
     list-style: none;
     margin: 0 0 2em;
     padding: 0;
@@ -9,3 +9,6 @@ ul.hmenu li {
     display: inline;
 }
 
+body {
+    background-color: #7EFF70;
+}
