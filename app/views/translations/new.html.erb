@@ -1,0 +1,17 @@
+<h1>Translations#new</h1>
+
+<%= form_for(:translation, @translation, :url => project_translations_path) do |f| %>
+  <div class="field">
+    <%= f.label :key %>:
+    <%= f.text_field :key %>
+  </div>
+  <br/>
+  <div class="field">
+    <%= f.label :value %>:
+    <%= f.text_field :value %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Add" %>
+  </div>
+<% end %>
+

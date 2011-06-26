@@ -1,0 +1,28 @@
+<h2>Translations list</h2>
+<br/>
+
+<%= form_for(:translation, @translation, :url => project_translations_path) do |f| %>
+  <div class="field">
+    <%= f.label :key %><br/>
+    <%= f.text_field :key %>
+  </div>
+  <div class="field">
+    <%= f.label :value %><br/>
+    <%= f.text_field :value %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Add" %>
+  </div>
+<% end %>
+
+
+<br/>
+<table border="1">
+<% @project.translations.each do |t| %>
+  <tr>
+    <td><%= t.key %></td>
+    <td><%= t.value %></td>
+  </tr>
+<% end %>
+</table>
+
