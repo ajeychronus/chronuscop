@@ -1,0 +1,12 @@
+
+<%= link_to "Home", root_path %><br/>
+<% if signed_in? %>
+  <%= link_to "Settings", edit_user_registration_path(current_user) %><br/>
+<% end %>
+<%= link_to "Help", pages_help_path %><br/>
+<% if signed_in? %>
+  <%= link_to "Sign out", destroy_user_session_path %><br/>
+<% else %>
+  <%= link_to "Sign in", new_user_session_path %><br/>
+<% end %>
+

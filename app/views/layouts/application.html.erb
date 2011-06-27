@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Chronuscop</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
-</head>
-<body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <head>
+    <title><%= "Chronuscop" %></title>
+    <%= csrf_meta_tag %>
+    <%= render 'layouts/stylesheets' %>
+    <%= javascript_include_tag :defaults %>
+  </head>
+  <body>
+    <div id="banner">
+      <%= render 'layouts/banner' %>
+    </div>
+    
 
-  <ul class="hmenu">
-    <%= render 'devise/menu/registration_items' %>
-    <%= render 'devise/menu/login_items' %>
-  </ul>
+    <div id="side">
+      <%= render 'layouts/header' %>
+    </div>
+    
+    <div id="main">
+      <% flash.each do |key, value| %>
+        <div class="flash <%= key %>"><%= value %></div>
+      <% end %>
+      <%= yield %>
+    </div>
 
-<%= yield %>
-
-</body>
+      
+    <div id="footer">
+    <%= render 'layouts/footer' %>
+    </div>
+  </body>
 </html>
