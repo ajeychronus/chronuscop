@@ -16,7 +16,7 @@ class TranslationsController < ApplicationController
     @translation = @project.translations.build(params[:translation])
 
     if(@translation.save)
-      redirect_to project_translations_path,:flash => { :success => "Translation created"}
+      redirect_to project_translations_path,:flash => { :success => "Translation saved."}
     else
       redirect_to project_translations_path, :flash => { :error => "Could not save"}
     end

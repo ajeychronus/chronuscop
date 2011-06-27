@@ -1,3 +1,13 @@
-<h1>The chronuscop application.</h1>
-<p> Translate your applications with ease !!! </p>
+<h1 class="heading">The chronuscop application.</h1>
+<p> Translate and internationalize  your applications with ease !!! </p>
+<hr>
 
+<h3>
+<% if user_signed_in? then %>
+<%= link_to "my projects",projects_path %>
+<% else %>
+  <span class="button">
+    <%= link_to "Sign up",new_user_registration_path %>
+  </span>
+<% end %>
+</h3>

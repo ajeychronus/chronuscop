@@ -10,22 +10,17 @@
     <div id="banner">
       <%= render 'layouts/banner' %>
     </div>
-    
 
-    <div id="side">
+    <div class="container">
       <%= render 'layouts/header' %>
-    </div>
-    
-    <div id="main">
-      <% flash.each do |key, value| %>
+      <br/>
+      <section>
+        <% flash.each do |key, value| %>
         <div class="flash <%= key %>"><%= value %></div>
-      <% end %>
-      <%= yield %>
-    </div>
-
-      
-    <div id="footer">
-    <%= render 'layouts/footer' %>
+        <% end %>
+        <%= yield %>
+      </section>
+      <%= render 'layouts/footer' %>
     </div>
   </body>
 </html>

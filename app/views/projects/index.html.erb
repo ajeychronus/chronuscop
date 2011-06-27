@@ -1,6 +1,8 @@
-<h1>Projects</h1>
+<h1 class="heading">Projects</h1>
+<p> Manage your projects. </p>
 <hr>
-<%= link_to "Add project",new_project_path %><br/>
+
+<h3>
 <% if( current_user.projects.count == 0) then %>
 <%= "no user projects" %>
 <% else %>
@@ -11,5 +13,7 @@
 <% end %>
 </ol>
 
+</h3>
+<%= link_to "Add project",new_project_path %>
 <% end %>
 

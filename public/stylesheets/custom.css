@@ -1,129 +1,247 @@
-html {
-    height: 100%;
+#banner {
+  background: black ;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid;
+  font: small-caps 40px/40px "Times New Roman", serif;
+  color: #A1BEC4 ;
+  text-align: center;
+}
+#banner img {
+  float: left;
+}
+
+/*Button Style*/
+.button {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 190px;
+    height:auto;
+    font:150% "Lucida Grande",    Geneva, Verdana,    Arial, Helvetica,    sans-serif;
+    text-align:center;
+    white-space:nowrap;
+    padding: 20px;
+    -moz-border-radius:    10px;
+    -webkit-border-radius: 10px;
+    border-radius:         10px;
+
+}
+
+
+/*Button link styles*/ .button a:link, .button a:visited
+{
+    color: #eee;
+    background-color:#879CA1;
+    font-size:1em;
+    font-weight:bolder;
+    text-decoration: none;
+    border-bottom:0.1em solid #555;
+    border-right:0.1em solid #555;
+    border-top:0.1em solid #ccc;
+    border-left:0.1em solid #ccc;
+    margin: 0.2em;
+    padding:0.2em;
+    display:block;
+    -moz-border-radius:    10px;
+    -webkit-border-radius: 10px;
+    border-radius:         10px;
+
+}
+
+.container {
+  width: 710px;
 }
 
 body {
-    height: 100%;
-    background: #141;
+  background-image: url("../images/carpet.png");
+  background-repeat: repeat;
 }
 
-
-
-#banner {
-    background: #9c9;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid;
-    font: small-caps 40px/40px "Times New Roman", serif;
-    color: #282;
-    text-align: center;
+header {
+  padding-top: 20px;
 }
 
-#banner img {
-    float: left;
+header img {
+  padding: 1em;
+  background: #fff;
 }
 
-#main {
-    margin-right: 17em;
-    position: relative;
-    margin-left: 17em;
-    min-height: 100%;
-    padding-top: 4ex;
-    padding-left: 2em;
-    background: white;
+section {
+  margin-top: 1em;
+  font-size: 120%;
+  padding: 20px;
+  background: #fff;
+  border:7px solid #A1BEC4;
+  min-height: 400px;
+
 }
 
-#side {
-    float: left;
-    position: relative;
-    min-height: 100%;
-    padding-top: 1em;
-    padding-left: 1em;
-    padding-bottom: 1em;
-    width: 16em;
-    background: #141;
+section h1 {
+  font-size: 200%;
 }
-
-#side a {
-    color: #bfb;
-    font-size: small;
-}
-
 
 /* Links */
 
 a {
-    color: #09c;
-    text-decoration: none;
+  color: #879CA1;               /*879CA1 is a bit darker than A1BEC4*/
+  text-decoration: none;
 }
 
 a:hover {
-    color: #069;
-    text-decoration: underline;
+  color: #879CA1;
+  text-decoration: underline;
 }
 
 a:visited {
-    color: #069;
+  color: #879CA1;
 }
 
-#footer {
+/* Navigation */
 
-    position: relative;
-    height: 100px;
-    margin-top: -2.5em;
-    background: #9c9;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-top: 2px solid;
-    border-bottom: 2px solid;
-    font: small-caps 20px/20px "Times New Roman", serif;
-    color: #282;
-    text-align: center;
+nav {
+  float: right;
 }
 
-#footer ul li{
-    display: inline;
+nav {
+  background-color: white;
+  padding: 0 0.7em;
+  white-space: nowrap;
 }
-/*  Error messages */
 
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 0.2em 0;
+}
+
+nav ul li a {
+  padding: 0 5px;
+  font-weight: bold;
+}
+
+nav ul li a:visited {
+  color: #879CA1;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Sign up button */
+
+a.signup_button {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center;
+  width: 190px;
+  color: #fff;
+  background: #006400;
+  font-size: 150%;
+  font-weight: bold;
+  padding: 20px;
+}
+
+/* Round corners */
+
+.round {
+  -moz-border-radius:    10px;
+  -webkit-border-radius: 10px;
+  border-radius:         10px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 10px;
+  width: 710px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+footer nav {
+  float: none;
+}
+
+
+/* error styling. */
 .field_with_errors {
-    margin-top: 10px;
-    padding: 2px;
-    background-color: red;
-    display: table;
+  margin-top: 10px;
+  padding: 2px;
+  background-color: red;
+  display: table;
 }
 
 .field_with_errors label {
-    color: #fff;
+  color: #fff;
 }
 
 #error_explanation {
-    width: 400px;
-    border: 2px solid red;
-    padding: 7px;
-    padding-bottom: 12px;
-    margin-bottom: 20px;
-    background-color: #f0f0f0;
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
 }
 
 #error_explanation h2 {
-    text-align: left;
-    font-weight: bold;
-    padding: 5px 5px 5px 15px;
-    font-size: 12px;
-    margin: -7px;
-    background-color: #c00;
-    color: #fff;
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
 }
 
 #error_explanation p {
-    color: #333;
-    margin-bottom: 0;
-    padding: 5px;
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
 }
 
 #error_explanation ul li {
-    font-size: 12px;
-    list-style: square;
+  font-size: 12px;
+  list-style: square;
+}
+
+
+/* styling for user listing. */
+ul.users {
+  margin-top: 1em;
+}
+
+.users li {
+  list-style: none;
+}
+
+
+/* styling headings.*/
+h1.heading {
+    text-align: center;
+}
+
+/*styling the translations table.*/
+#translations table {
+    font: 11px/24px Verdana, Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 320px;
+}
+
+#translations td.heading {
+    text-align: center;
+    color:white;
+    background-color: #879CA1;
+}
+
+#translations td {
+    border: 1px solid #CCC;
+    padding: 0 0.5em;
 }
 
