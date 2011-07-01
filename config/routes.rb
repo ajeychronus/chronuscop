@@ -11,7 +11,11 @@ Chronuscop::Application.routes.draw do
   get "pages/help"
 
   resources :projects do
-    resources :translations
+    resources :translations do
+      collection do
+        post 'add'              # Added to enable posting translations, all at once.
+      end
+    end
   end
 
 

@@ -10,6 +10,11 @@ gem 'sqlite3'
 # check the version number.
 # gem 'devise','1.3.4'
 gem 'devise', '1.1.3'
+
+# gem necessary for xml parsing.
+gem 'xml-simple','~>1.0.15'
+
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
