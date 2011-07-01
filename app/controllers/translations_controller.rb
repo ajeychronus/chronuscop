@@ -33,6 +33,7 @@ class TranslationsController < ApplicationController
     else
       require 'xmlsimple'
       translations_hash = XmlSimple.xml_in(params[:translations_xml_string])
+      @project = Project.find(params[:project_id])
 
       translations_hash.each do |key,value|
         t = Translation.find_by_key(key)
@@ -40,11 +41,13 @@ class TranslationsController < ApplicationController
           t.value = value
           t.save
         else
-          @project = Project.find(params[:project_id])
+
           @translation = @project.translations.build()
           @translation.key = key
           @translation.value = value
-          @translation.save
+          if ! @translation.save then
+            puts "record could not be saved."
+          end
         end
       end
 
