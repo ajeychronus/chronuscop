@@ -2,13 +2,13 @@
 <br>
 <hr>
 <div id="translations">
-<% if @project.translations.count > 0 %>
+<% if @translations.count > 0 %>
   <table>
     <tr>
       <td class="heading">Key</td>
       <td class="heading">Value</td>
     </tr>
-    <% @project.translations.each do |t| %>
+    <% @translations.each do |t| %>
       <tr>
         <td><%= t.key %></td>
         <td><%= t.value %></td>

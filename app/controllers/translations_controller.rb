@@ -5,9 +5,23 @@ class TranslationsController < ApplicationController
   def index
     @project = Project.find(params[:project_id])
 
+    # Handling the case when only translations updated after last sync are needed.
+    # last_update_at is an optional parameter.
+    last_update_at = params[:last_update_at]
+
+    # if the last_update_at parameter is passed then use it.
+    if (last_update_at) then
+      last_update_at = last_update_at.to_i
+      time_obj = Time.at(last_update_at)
+      @translations = @project.translations.where("updated_at > ?",time_obj)
+    else
+      @translations = @project.translations
+    end
+
+
     respond_to do |format|
       format.html
-      format.xml { render :xml => @project.translations }
+      format.xml { render :xml => @translations }
     end
   end
 
