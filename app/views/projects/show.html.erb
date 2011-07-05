@@ -1,10 +1,18 @@
 <h1 class="heading"><%= @project.name %></h1>
 <hr>
+<%= form_tag(project_translations_path(@project), :method => "get") do %>
+  <%= label_tag(:edit_lang, "Choose language") %>
+  <%= submit_tag("Manage") %>
+<% end %>
+
+
+<%= link_to "Manage Translations",project_translations_path(@project) %>
+<hr>
 <% if(@project.translations.count == 0) then %>
 <%= "No translations added yet" %><br/>
 <% else %>
 
-<h3>Translations list</h3>
+<h3>All translations in this project.</h3>
 <div id="translations">
   <table border="1">
     <tr>
@@ -20,4 +28,4 @@
   </table>
 </div>
 <% end %>
-<%= link_to "Manage Translations",project_translations_path(@project) %>
+
