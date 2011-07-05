@@ -1,5 +1,7 @@
 Chronuscop::Application.routes.draw do
 
+  resources :languages
+
   devise_for :users
 
   get "pages/index"
