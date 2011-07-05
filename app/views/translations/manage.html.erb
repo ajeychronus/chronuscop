@@ -1,0 +1,8 @@
+<h2>Manage your translations</h2>
+<hr>
+<% language_id = params[:language] %>
+
+<% @default_translations.each do |d| %>
+  <%= d.value %><br/>
+
+<% end %>

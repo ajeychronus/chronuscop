@@ -1,12 +1,23 @@
 <h1 class="heading"><%= @project.name %></h1>
 <hr>
-<%= form_tag(project_translations_path(@project), :method => "get") do %>
-  <%= label_tag(:edit_lang, "Choose language") %>
+<%= form_tag(manage_project_translations_path(@project), :method => "get") do %>
+  <%= label_tag(:language, "Choose language") %><br/>
+
+  <% options_array = Array.new %>
+  <% langs_arr = @project.languages.split(/:/) %>
+  <% for i in 0..(langs_arr.size-1) do %>
+  <%  options_array[i] = [Language.find_by_id(langs_arr[i]).name,langs_arr[i]] %>
+  <% end %>
+  <%= select_tag(:language,options_for_select(options_array)) %>
   <%= submit_tag("Manage") %>
 <% end %>
 
-
-<%= link_to "Manage Translations",project_translations_path(@project) %>
+<br/>
+<%= form_tag(addlanguage_project_path(@project), :method => "get") do %>
+  <%= label_tag(:language, "Add language")%><br/>
+  <%= select_tag(:language,options_from_collection_for_select(Language.all, :id, :name)) %>
+  <%= submit_tag("Add") %>
+<% end %>
 <hr>
 <% if(@project.translations.count == 0) then %>
 <%= "No translations added yet" %><br/>

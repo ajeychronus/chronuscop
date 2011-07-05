@@ -25,6 +25,21 @@ class TranslationsController < ApplicationController
     end
   end
 
+  def manage                    # Action to manage translations.
+    @project = Project.find(params[:project_id])
+
+    if(!params[:language])
+      flash[:error] = "No language parameter passed."
+      redirect_to project_path(@project)
+    else
+      @default_translations = @project.translations.where("language = ?",0)
+      @language_hash = Hash.new
+      @project.translations.where("language = ?",params[:language]).each do |t|
+        @language_hash[t.key] = t.value
+      end
+    end
+  end
+
   def create
     @project = Project.find(params[:project_id])
     @translation = @project.translations.build(params[:translation])
@@ -61,6 +76,7 @@ class TranslationsController < ApplicationController
           @translation = @project.translations.build()
           @translation.key = key
           @translation.value = value
+          @translation.language = 0 # 0 is the code for default.
           if ! @translation.save then
             puts "record could not be saved."
           end
@@ -76,6 +92,7 @@ class TranslationsController < ApplicationController
           @en_translation = @project.translations.build()
           @en_translation.key = en_key
           @en_translation.value = value
+          @en_translation.language = 1 # 1 is the language code for english
 
           if ! @en_translation.save then
             puts "record could not be saved."

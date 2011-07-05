@@ -13,7 +13,15 @@ Chronuscop::Application.routes.draw do
   get "pages/help"
 
   resources :projects do
+    member do                   # Action to add a language to a project.
+      get 'addlanguage'
+    end
+
     resources :translations do
+      collection do
+        get 'manage'
+      end
+
       collection do
         post 'add'              # Added to enable posting translations, all at once.
       end
