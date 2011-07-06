@@ -33,10 +33,10 @@ class TranslationsController < ApplicationController
       redirect_to project_path(@project)
     else
       @default_translations = @project.translations.where("language = ?",0)
-      @language_hash = Hash.new
-      @project.translations.where("language = ?",params[:language]).each do |t|
-        @language_hash[t.key] = t.value
-      end
+      # @language_hash = Hash.new
+      # @project.translations.where("language = ?",params[:language]).each do |t|
+      #   @language_hash[t.key] = t.value
+
     end
   end
 
@@ -45,9 +45,15 @@ class TranslationsController < ApplicationController
     @translation = @project.translations.build(params[:translation])
 
     if(@translation.save)
-      redirect_to project_translations_path,:flash => { :success => "Translation saved."}
+      respond_to do |format|
+        format.html { redirect_to :back, :flash => { :success => "Translation saved."} }
+        format.js
+      end
     else
-      redirect_to project_translations_path, :flash => { :error => "Could not save"}
+      respond_to do |format|
+        format.html { redirect_to :back, :flash => { :error => "Could not save translation.."} }
+        format.js
+      end
     end
   end
 
@@ -104,12 +110,34 @@ class TranslationsController < ApplicationController
   end
 
   def edit
+    @project = Project.find(params[:project_id])
+    @translation = @project.translations.build(params[:translation])
+
+    if(@translation.save)
+      redirect_to :back, :flash => { :success => "Translation saved."}
+    else
+      redirect_to :back, :flash => { :error => "Could not save"}
+    end
   end
 
   def show
   end
 
+  # responds to PUT
   def update
+    @translation = Translation.find(params[:id])
+
+    if(@translation.update_attributes(params[:translation])) then
+      respond_to do |format|
+        format.html { redirect_to :back, :flash => { :success => "Updated tranlation."} }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to :back, :flash => { :success => "Could not update translation."} }
+        format.js
+      end
+    end
   end
 
   def destroy

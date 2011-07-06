@@ -1,8 +1,43 @@
-<h2>Manage your translations</h2>
-<hr>
-<% language_id = params[:language] %>
+<!-- Capturing the language that is passed as a parameter. -->
+<% language = Language.find_by_id(params[:language]) %>
 
-<% @default_translations.each do |d| %>
-  <%= d.value %><br/>
+<h2>Manage your <%= language.name %> translations</h2>
+<hr>
+<b><%= link_to "Project",@project %></b><br/><hr>
+
+<div id="message">
+</div>
+
+<!-- Displaying default text followed by a form. -->
+<% @default_translations.each do |d|
+     corr_language_key = d.key.sub(/default/,language.code) %>
+<%= d.value %><br/>
+
+<%     # check whether there is already a translation corresponding to this key in this project.
+       @corr_translation = @project.translations.find_by_key(corr_language_key) %>
+
+<!-- If there is no such translation then create a new one but do not save it to db. -->
+<%
+     if(!@corr_translation) then
+       @corr_translation = @project.translations.build()
+       @corr_translation.key = corr_language_key
+       @corr_translation.language = language.id
+     end
+%>
+
+<!-- A form is displayed. -->
+<%= form_for [@project,@corr_translation],:remote => true  do |f| %>
+  <div class="field">
+    <%= f.label :value %><br/>
+    <%= f.text_field :value %>
+  </div><br/>
+  <%= f.hidden_field(:key)%>
+  <%= f.hidden_field(:language) %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
 
 <% end %>
+
+
