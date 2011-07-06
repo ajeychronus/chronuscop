@@ -5,9 +5,6 @@
 <hr>
 <b><%= link_to "Project",@project %></b><br/><hr>
 
-<div id="message">
-</div>
-
 <!-- Displaying default text followed by a form. -->
 <% @default_translations.each do |d|
      corr_language_key = d.key.sub(/default/,language.code) %>
@@ -25,6 +22,8 @@
      end
 %>
 
+<div id="message<%= @corr_translation.id %>">
+</div>
 <!-- A form is displayed. -->
 <%= form_for [@project,@corr_translation],:remote => true  do |f| %>
   <div class="field">
